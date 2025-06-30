@@ -1,0 +1,73 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-image: url('background2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header styles */
+/* Header styles */
+header {
+    background-color: #b6e1a1;  /* Light green color */
+    padding: 2rem;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 3rem;  /* Increased size */
+    text-decoration: underline;  /* Underline the heading */
+}
+
+header p {
+    font-size: 1.2rem;
+}
+
+
+/* Main section styles */
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+/* Recommendation section */
+.recommendation-section {
+    margin: 2rem;
+    text-align: center;
+}
+
+.recommendation-section select, 
+.recommendation-section button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+/* Recommended products container */
+.recommendations {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #ffffffb0;
+    border-radius: 10px;
+}
+
+/* Footer styles */
+footer {
+    background-color: #b6e1a1;  /* Light green color */
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}

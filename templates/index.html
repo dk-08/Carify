@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO CARIFY</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>WELCOME TO CARIFY</h1>
+        <p>Choosing products suited for your skin type is crucial to maintaining healthy, glowing skin. 
+           Using wrong products can cause irritation, breakouts, dryness, or oiliness. 
+           CARIFY is here to guide you — we recommend the perfect products according to your skin type, 
+           making skincare easy and stress-free for you!</p>
+    </header>
+
+    <main>
+        <div class="recommendation-section">
+            <h2>Get Your Personalized Recommendations</h2>
+            <select id="skinType">
+                <option value="Dry">Dry</option>
+                <option value="Oily">Oily</option>
+                <option value="Combination">Combination</option>
+                <option value="Normal">Normal</option>
+                <option value="Sensitive">Sensitive</option>
+            </select>
+            <button onclick="getRecommendations()">Recommend</button>
+        </div>
+
+        <div class="recommendations" id="recommendations">
+            <!-- Recommended products will show here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 SkinCare Co. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function getRecommendations() {
+            var skinType = document.getElementById('skinType').value;
+
+            fetch('/recommend', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'skin_type=' + skinType
+            })
+            .then(response => response.json())
+            .then(data => {
+                var recommendationDiv = document.getElementById('recommendations');
+                recommendationDiv.innerHTML = "<h3>Recommended Products:</h3>";
+
+                data.forEach(function(product) {
+                    recommendationDiv.innerHTML += `
+                        <div style="margin-bottom: 1rem;">
+                            <strong>Name:</strong> ${product.Name}<br>
+                            <strong>Brand:</strong> ${product.Brand}<br>
+                            <strong>Price:</strong> $${product.Price}<br>
+                            <strong>Ingredients:</strong> ${product.Ingredients}<br>
+                            <hr>
+                        </div>
+                    `;
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
